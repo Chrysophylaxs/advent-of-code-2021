@@ -47,9 +47,6 @@ private:
 	bool marked[5][5] = {0};
 };
 
-int numbers[100];
-Bingo bingos[100];
-
 std::istream& operator>>(std::istream& is, Bingo& bingo) {
 	for (int i = 0; i < 5; i++)
 		for (int j = 0; j < 5; j++)
@@ -61,10 +58,13 @@ std::ostream& operator<<(std::ostream& os, const Bingo& bingo) {
 	for (int i = 0; i < 5; i++) {
 		for (int j = 0; j < 5; j++)
 			os << (bingo.marked[i][j] ? "[" : " ") << (bingo.board[i][j] < 10 ? " " : "") << bingo.board[i][j] << (bingo.marked[i][j] ? "]" : " " ) << " ";
-		std::cout << std::endl;
+		os << std::endl;
 	}
 	return os;
 }
+
+int numbers[100];
+Bingo bingos[100];
 
 int part1() {
 	for (int i = 0; i < 100; i++)
