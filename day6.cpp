@@ -2,9 +2,6 @@
 #include <fstream>
 
 typedef unsigned long long Ull;
-
-int lantern_fish[300];
-
 Ull lookup[257][9] = {0};
 
 Ull spawn(int fish, int days) {
@@ -18,6 +15,8 @@ Ull spawn(int fish, int days) {
 
 	return lookup[days][fish];
 }
+
+int lantern_fish[300];
 
 Ull part1() {
 	Ull total = 0;
