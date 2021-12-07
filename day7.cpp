@@ -38,8 +38,6 @@ int part2() {
 		best = std::min(fuel_cost_crab(x), best);
 
 	return best;
-	
-	return 0;
 }
 
 int main() {
