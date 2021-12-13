@@ -2,22 +2,20 @@
 #include <fstream>
 
 struct Paper {
-	Paper& fold_x(int x) {
+	void fold_x(int x) {
 		for (int i = 1; x + i < width && x - i >= 0; i++)
 			for (int j = 0; j < height; j++)
 				dots[x - i][j] |= dots[x + i][j];
 
 		width = x;
-		return *this;
 	}
 
-	Paper& fold_y(int y) {
+	void fold_y(int y) {
 		for (int j = 1; y + j < height && y - j >= 0; j++)
 			for (int i = 0; i < width; i++)
 				dots[i][y - j] |= dots[i][y + j];
 
 		height = y;
-		return *this;
 	}
 
 	int num_dots() const {
@@ -36,7 +34,7 @@ struct Paper {
 std::ostream& operator<<(std::ostream& os, const Paper& p) {
 	for (int j = 0; j < p.height; j++) {
 		for (int i = 0; i < p.width; i++)
-			os << (p.dots[i][j] ? "#" : ".");
+			os << " #"[p.dots[i][j]];
 		os << std::endl;
 	}
 	return os;
@@ -44,7 +42,10 @@ std::ostream& operator<<(std::ostream& os, const Paper& p) {
 
 Paper paper;
 
-int part1() { return paper.fold_x(655).num_dots(); }
+int part1() {
+	paper.fold_x(655);
+	return paper.num_dots();
+}
 
 int part2() {
 	for (int y : {447, 223, 111, 55, 27, 13, 6})
