@@ -47,9 +47,12 @@ Paper paper;
 int part1() { return paper.fold_x(655).num_dots(); }
 
 int part2() {
-	paper.fold_y(447).fold_x(327).fold_y(223).fold_x(163)
-		.fold_y(111).fold_x(81).fold_y(55).fold_x(40)
-		.fold_y(27).fold_y(13).fold_y(6);
+	for (int y : {447, 223, 111, 55, 27, 13, 6})
+		paper.fold_y(y);
+
+	for (int x : {327, 163, 81, 40})
+		paper.fold_x(x);
+
 	return 0;
 }
 
